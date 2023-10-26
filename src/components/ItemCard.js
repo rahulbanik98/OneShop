@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai'
 import { MdDelete } from 'react-icons/md'
 import { useDispatch, useSelector } from 'react-redux'
@@ -7,9 +7,6 @@ import { decrementQty, incrementQty, removeFromCart } from '../redux/slices/Cart
 const ItemCard = () => {
     const cartItems = useSelector((state) => state.CartSlice.cartInitialState)
     const dispatch = useDispatch();
-
-    const [minusHidden, setminushHidden] = useState('hidden')
-
     return (
         <>
             {
@@ -37,7 +34,7 @@ const ItemCard = () => {
                                             qty: 1,
                                             id: value.id
                                         })) : value.qty = 0}
-                                        className={` ${value.qty === 1 ? minusHidden : 'border-2 border-gray-600 text-gray-600 hover:text-white hover:bg-green-500 hover:border-none rounded-md p-1 text-xl transition-all ease-linear cursor-pointer'}`} />
+                                        className={` ${value.qty === 1 ? 'hidden' : 'border-2 border-gray-600 text-gray-600 hover:text-white hover:bg-green-500 hover:border-none rounded-md p-1 text-xl transition-all ease-linear cursor-pointer'}`} />
                                     <span>{value.qty}</span>
                                     <AiOutlinePlus
                                         onClick={() => dispatch(incrementQty({
