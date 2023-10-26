@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai'
 import { MdDelete } from 'react-icons/md'
 import { useDispatch, useSelector } from 'react-redux'
@@ -7,7 +7,8 @@ import { decrementQty, incrementQty, removeFromCart } from '../redux/slices/Cart
 const ItemCard = () => {
     const cartItems = useSelector((state) => state.CartSlice.cartInitialState)
     const dispatch = useDispatch();
-    console.log("cartItems ", cartItems);
+
+    const [minusHidden, setminushHidden] = useState('hidden')
 
     return (
         <>
@@ -26,15 +27,29 @@ const ItemCard = () => {
                             <div className='flex justify-between'>
                                 <span className='text-green-500 font-bold'>₹{value.price}</span>
                                 <div className='flex justify-center items-center gap-2 right-7 absolute'>
-                                    <AiOutlinePlus
-                                        onClick={() => dispatch(incrementQty(value.id, value.qty))}
-                                        className='border-2 border-gray-600
-                                    text-gray-600 hover:text-white hover:bg-green-500
-                                    hover:border-none rounded-md p-1 text-xl transition-all ease-linear cursor-pointer'/>
-                                    <span>{value.qty}</span>
                                     <AiOutlineMinus
-                                        onClick={() => value.qty > 1 ? dispatch(decrementQty(value.id)) : value.qty = 0}
-                                        className='border-2 border-gray-600 
+                                        onClick={() => value.qty > 1 ? dispatch(decrementQty({
+                                            img: value.img,
+                                            name: value.name,
+                                            price: value.price,
+                                            desc: value.desc,
+                                            rating: value.rating,
+                                            qty: 1,
+                                            id: value.id
+                                        })) : value.qty = 0}
+                                        className={` ${value.qty === 1 ? minusHidden : 'border-2 border-gray-600 text-gray-600 hover:text-white hover:bg-green-500 hover:border-none rounded-md p-1 text-xl transition-all ease-linear cursor-pointer'}`} />
+                                    <span>{value.qty}</span>
+                                    <AiOutlinePlus
+                                        onClick={() => dispatch(incrementQty({
+                                            img: value.img,
+                                            name: value.name,
+                                            price: value.price,
+                                            desc: value.desc,
+                                            rating: value.rating,
+                                            qty: 1,
+                                            id: value.id
+                                        }))}
+                                        className='border-2 border-gray-600
                                     text-gray-600 hover:text-white hover:bg-green-500
                                     hover:border-none rounded-md p-1 text-xl transition-all ease-linear cursor-pointer'/>
                                 </div>
