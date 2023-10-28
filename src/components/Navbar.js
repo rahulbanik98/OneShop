@@ -27,7 +27,7 @@ const Navbar = () => {
 
                 <div className='mx-6'>
                     <h3 className='text-xl font-bold text-gray-400'>{currentTime && ampm ? ampm + " " + currentTime : "Loading..."}</h3>
-                    <h1 className='text-2xl font-bold text-gray-600'>One Stop 247</h1>
+                    <h1 className='text-2xl font-bold text-gray-600'>Saturday Pizza</h1>
                 </div>
                 <div className='mx-6'>
                     <input

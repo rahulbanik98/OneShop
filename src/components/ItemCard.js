@@ -5,8 +5,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { decrementQty, incrementQty, removeFromCart } from '../redux/slices/CartSlice'
 
 const ItemCard = () => {
-    const cartItems = useSelector((state) => state.CartSlice.cartInitialState)
     const dispatch = useDispatch();
+
+    const cartItems = useSelector((state) => state.CartSlice.cartInitialState)
 
     return (
         <>
