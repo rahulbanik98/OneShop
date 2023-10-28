@@ -6,7 +6,9 @@ import { decrementQty, incrementQty, removeFromCart } from '../redux/slices/Cart
 
 const ItemCard = () => {
     const dispatch = useDispatch();
+
     const cartItems = useSelector((state) => state.CartSlice.cartInitialState)
+
     return (
         <>
             {
