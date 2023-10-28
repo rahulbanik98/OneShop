@@ -6,10 +6,10 @@ import { useSelector } from 'react-redux'
 
 const Cart = () => {
     const cartItem = useSelector((state) => state.CartSlice.cartInitialState)
-    
+
     const totalQty = cartItem.reduce((totalQty, item) => totalQty + item.qty, 0)
     const totalPrise = cartItem.reduce((total, item) => total + item.qty * item.price, 0)
-    
+
     const [activeCart, setActiveCart] = useState(false)
 
     return (
@@ -35,7 +35,7 @@ const Cart = () => {
             <HiShoppingCart
                 onClick={() => setActiveCart(!activeCart)}
                 className={`cursor-pointer rounded-full bg-white shadow-md text-5xl p-3 
-                fixed bottom-4 right-4 ${totalQty > 0 && 'animate-bounce delay-500 transition-all bg-slate-900 text-yellow-50'}`}
+                fixed bottom-4 right-4 ${totalQty > 0 && 'animate-bounce delay-500 transition-all bg-slate-900 text-yellow-600'}`}
             />
         </>
     )
