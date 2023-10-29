@@ -3,6 +3,9 @@ import { IoMdClose } from 'react-icons/io'
 import ItemCard from './ItemCard'
 import { HiShoppingCart } from 'react-icons/hi'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import Success from '../pages/Success'
+
 
 const Cart = () => {
     const cartItem = useSelector((state) => state.CartSlice.cartInitialState)
@@ -12,6 +15,11 @@ const Cart = () => {
 
     const [activeCart, setActiveCart] = useState(false)
 
+    const navigate = useNavigate()
+    const checkoutFunction = () => {
+        console.log("CheckoutFunction");
+        navigate('/success')
+    }
     return (
         <>
             <div className={`fixed right-0 top-0 w-full bg-white lg:w-[27vw] h-full p-5 
@@ -29,7 +37,10 @@ const Cart = () => {
                     <h3>Items : {totalQty}</h3>
                     <h3>Total Amount : {totalPrise}</h3>
                     <hr className='lg:w-[24vw] w-[90vw] mb-4 mt-2' />
-                    <button className='bg-green-500 font-bold px-3 text-white py-2 rounded-lg w-[90vw] lg:w-[24vw]'>Checkout</button>
+                    <button
+                        onClick={checkoutFunction}
+                        className='bg-green-500 font-bold px-3 text-white py-2 rounded-lg w-[90vw] lg:w-[24vw]'
+                    >Checkout</button>
                 </div>
             </div>
             <HiShoppingCart

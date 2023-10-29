@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { setSearch } from '../redux/slices/SearchSlice';
 
 const Navbar = () => {
+    const searchSlice = useSelector((state) => state.SearchSlice.search)
+    const dispatch = useDispatch();
+
     const [currentTime, setCurrentTime] = useState()
     const [ampm, setAmpm] = useState()
 
@@ -31,6 +36,8 @@ const Navbar = () => {
                 </div>
                 <div className='mx-6'>
                     <input
+                        onChange={(e) => dispatch(setSearch(e.target.value))}
+                        value={searchSlice}
                         type='search'
                         name='search'
                         placeholder='Search here'
