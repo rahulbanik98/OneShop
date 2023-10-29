@@ -77,4 +77,7 @@ npm i redux
 
 npm i react-redux# OneShop
 
+https://www.youtube.com/watch?v=MF6iLOZeL4Y&ab_channel=Coder29
+
 Ignore :- 3:07:20
+for hosting use vercel

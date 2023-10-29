@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { AiFillStar } from 'react-icons/ai';
 import FoodData from '../data/FoodData';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../redux/slices/CartSlice';
 import toast, { Toaster } from 'react-hot-toast';
 
 
 const FoodCard = () => {
+    const categorySliceData = useSelector((state) => state.CategorySlice)
+    const searchSlice = useSelector((state) => state.SearchSlice.search)
+    console.log('searchSlice from Card', searchSlice);
+
     const notify = (value) => toast.custom((t) => (
         <div
             className={`${t.visible ? 'animate-enter' : 'animate-leave'
@@ -46,7 +50,7 @@ const FoodCard = () => {
             </div>
         </div>
     ))
-        ;
+
 
     const dispatch = useDispatch()
 
@@ -66,6 +70,17 @@ const FoodCard = () => {
             id: value.id
         }))
     }
+    const temp = dataFood?.filter(food => {
+        if (categorySliceData.category === "All") {
+            return food.name.toLowerCase().includes(searchSlice.toLowerCase())
+        } else if (categorySliceData.category === food.category) {
+            return food
+        }
+    }).map((value) => {
+        return value
+    })
+
+    console.log("temp ", temp);
     return (
         <>
             <Toaster
@@ -73,25 +88,31 @@ const FoodCard = () => {
                 reverseOrder={false}
             />
             {
-                dataFood?.map((value, key) => (
+                dataFood?.filter(food => {
+                    if (categorySliceData.category === "All") {
+                        return food.name.toLowerCase().includes(searchSlice.toLowerCase())
+                    } else if (categorySliceData.category === food.category) {
+                        return food.name.toLowerCase().includes(searchSlice.toLowerCase())
+                    }
+                }).map((food, key) => (
                     <div className='font-bold w-[250px] bg-white p-5 flex flex-col rounded-lg gap-3' key={key}>
                         <img
                             className='w-auto h-[130px] hover:scale-110 cursor-grab transition-all duration-500 ease-in-out'
                             alt='pizza-img'
-                            src={value.img}
+                            src={food.img}
                         />
                         <div className='text-sm flex justify-between'>
-                            <h2>{value.name}</h2>
-                            <span className='text-green-500'>₹{value.price}</span>
+                            <h2>{food.name}</h2>
+                            <span className='text-green-500'>₹{food.price}</span>
                         </div>
-                        <p className='text-sm font-normal'>{value.desc.slice(0, 50)}...</p>
+                        <p className='text-sm font-normal'>{food.desc.slice(0, 50)}...</p>
                         <div className='flex justify-between'>
                             <span className='flex justify-center items-center'>
-                                <AiFillStar className='mr-1 text-yellow-400' /> {value.rating}
+                                <AiFillStar className='mr-1 text-yellow-400' /> {food.rating}
                             </span>
                             <button onClick={() => {
-                                addToCartFunction(value)
-                                notify(value)
+                                addToCartFunction(food)
+                                notify(food)
                             }}
                                 className='p-1 text-white bg-green-500 hover:bg-green-600 rounded-lg text-sm'>
                                 Add to card

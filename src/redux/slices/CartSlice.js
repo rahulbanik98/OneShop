@@ -34,3 +34,9 @@ const CartSlice = createSlice({
 export const { addToCart, removeFromCart, incrementQty, decrementQty } = CartSlice.actions;
 export default CartSlice.reducer;
 
+
+
+// export const fetchApiUsers = createAsyncThunk("fetchApiUsers", async () => {
+//     const result = await fetch("https://jsonplaceholder.typicode.com/users")
+//     return result.json();
+// })
