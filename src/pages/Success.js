@@ -13,7 +13,7 @@ const Success = () => {
     setTimeout(() => {
       dispatch('/')
     }, 8000)
-  }, [])
+  })
 
 
 

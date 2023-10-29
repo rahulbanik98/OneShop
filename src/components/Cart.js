@@ -4,8 +4,6 @@ import ItemCard from './ItemCard'
 import { HiShoppingCart } from 'react-icons/hi'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import Success from '../pages/Success'
-
 
 const Cart = () => {
     const cartItem = useSelector((state) => state.CartSlice.cartInitialState)

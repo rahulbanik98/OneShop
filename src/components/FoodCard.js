@@ -70,17 +70,7 @@ const FoodCard = () => {
             id: value.id
         }))
     }
-    const temp = dataFood?.filter(food => {
-        if (categorySliceData.category === "All") {
-            return food.name.toLowerCase().includes(searchSlice.toLowerCase())
-        } else if (categorySliceData.category === food.category) {
-            return food
-        }
-    }).map((value) => {
-        return value
-    })
-
-    console.log("temp ", temp);
+    
     return (
         <>
             <Toaster
