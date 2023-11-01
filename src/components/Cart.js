@@ -15,7 +15,6 @@ const Cart = () => {
 
     const navigate = useNavigate()
     const checkoutFunction = () => {
-        console.log("CheckoutFunction");
         navigate('/success')
     }
     return (

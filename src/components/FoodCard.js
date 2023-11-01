@@ -9,7 +9,6 @@ import toast, { Toaster } from 'react-hot-toast';
 const FoodCard = () => {
     const categorySliceData = useSelector((state) => state.CategorySlice)
     const searchSlice = useSelector((state) => state.SearchSlice.search)
-    console.log('searchSlice from Card', searchSlice);
 
     const notify = (value) => toast.custom((t) => (
         <div
@@ -107,7 +106,6 @@ const FoodCard = () => {
                                 className='p-1 text-white bg-green-500 hover:bg-green-600 rounded-lg text-sm'>
                                 Add to card
                             </button>
-                            
                         </div>
                     </div>
                 ))
