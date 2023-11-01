@@ -9,7 +9,6 @@ import toast, { Toaster } from 'react-hot-toast';
 const FoodCard = () => {
     const categorySliceData = useSelector((state) => state.CategorySlice)
     const searchSlice = useSelector((state) => state.SearchSlice.search)
-    console.log('searchSlice from Card', searchSlice);
 
     const notify = (value) => toast.custom((t) => (
         <div
@@ -70,17 +69,7 @@ const FoodCard = () => {
             id: value.id
         }))
     }
-    const temp = dataFood?.filter(food => {
-        if (categorySliceData.category === "All") {
-            return food.name.toLowerCase().includes(searchSlice.toLowerCase())
-        } else if (categorySliceData.category === food.category) {
-            return food
-        }
-    }).map((value) => {
-        return value
-    })
-
-    console.log("temp ", temp);
+    
     return (
         <>
             <Toaster
