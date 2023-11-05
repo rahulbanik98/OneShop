@@ -69,7 +69,7 @@ const FoodCard = () => {
             id: value.id
         }))
     }
-    
+
     return (
         <>
             <Toaster
@@ -77,7 +77,7 @@ const FoodCard = () => {
                 reverseOrder={false}
             />
             {
-                dataFood?.filter(food => {
+                dataFood ? dataFood.filter(food => {
                     if (categorySliceData.category === "All") {
                         return food.name.toLowerCase().includes(searchSlice.toLowerCase())
                     } else if (categorySliceData.category === food.category) {
@@ -92,7 +92,7 @@ const FoodCard = () => {
                         />
                         <div className='text-sm flex justify-between'>
                             <h2>{food.name}</h2>
-                            <span className='text-green-500'>₹{food.price}</span>
+                            <span className='text-[#f9bb46]'>₹{food.price}</span>
                         </div>
                         <p className='text-sm font-normal'>{food.desc.slice(0, 50)}...</p>
                         <div className='flex justify-between'>
@@ -103,12 +103,41 @@ const FoodCard = () => {
                                 addToCartFunction(food)
                                 notify(food)
                             }}
-                                className='p-1 text-white bg-green-500 hover:bg-green-600 rounded-lg text-sm'>
+                                className='p-1 text-white bg-[#f9c35c] hover:bg-[#f9bb46] rounded-lg text-sm'>
                                 Add to card
                             </button>
                         </div>
                     </div>
                 ))
+                    : <div className="w-[250px] bg-white p-5 flex flex-col rounded-lg gap-3 items-center">
+                        <div className="animate-pulse space-x-4">
+                            <div className=" bg-slate-700 w-[170px] h-[130px]"></div>
+                            <div className="flex-1 space-y-6 py-1">
+                                <div className='ml-[-10%]'>
+                                    <div className="space-y-3 mt-4">
+                                        <div className="grid grid-cols-3 gap-4">
+                                            <div className="h-2 bg-slate-700 rounded col-span-2"></div>
+                                            <div className="h-2 bg-slate-700 rounded col-span-1"></div>
+                                        </div>
+                                    </div>
+
+                                    <div className="space-y-3 mt-7">
+                                        <div className="grid grid-cols-3 gap-4">
+                                            <div className="h-2 bg-slate-700 rounded col-span-5"></div>
+                                            <div className="h-2 bg-slate-700 rounded col-span-5"></div>
+                                        </div>
+                                    </div>
+
+                                    <div className="space-y-5 mt-7">
+                                        <div className="grid grid-cols-3 gap-8">
+                                            <div className="h-2 bg-slate-700 rounded col-span-1"></div>
+                                            <div className="h-2 bg-slate-700 rounded col-span-2"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             }
             <Toaster />
         </>

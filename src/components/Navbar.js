@@ -28,8 +28,7 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className='flex flex-col lg:flex-row justify-between py-3 bg-slate-100'>
-
+            <nav className='flex flex-col lg:flex-row justify-between py-3 bg-[#d9d295]'>
                 <div className='mx-6'>
                     <h3 className='text-xl font-bold text-gray-400'>{currentTime && ampm ? ampm + " " + currentTime : "Loading..."}</h3>
                     <h1 className='text-2xl font-bold text-gray-600'>Saturday Pizza</h1>

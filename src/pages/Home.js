@@ -9,8 +9,9 @@ const Home = () => {
     <>
       <Navbar />
       <CategoryMenu />
-      <FoodItems/>
-      <Cart/>
+      <FoodItems />
+      <Cart />
+      <p className='text-sm text-gray-600 text-center'>All Rights Reserved. Copyright © Rahul Banik. || V.2.1.0</p>
     </>
   )
 }

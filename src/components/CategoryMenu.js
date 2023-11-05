@@ -26,15 +26,15 @@ const CategoryMenu = () => {
         <div className='flex gap-3 overflow-x-scroll scroll-smooth lg:overflow-x-hidden'>
           <button
             onClick={() => dispatch(setCategory("All"))}
-            className={`px-3 py-2 bg-slate-200 font-bold rounded-lg hover:bg-[#679e76] hover:text-white 
+            className={`px-3 py-2 bg-slate-200 font-bold rounded-lg hover:bg-[#f9be4f] hover:text-white 
             ${selectedCategory === "All" ? "bg-green-500 text-white" : ""}`}>
             All</button>
           {
             menu?.map((value, key) => (
               <button
                 onClick={() => dispatch(setCategory(value))}
-                className={`${selectedCategory === value && "bg-green-500 text-white"} 
-                px-3 py-2 bg-slate-200 font-bold rounded-lg hover:bg-[#679e76] hover:text-white`}
+                className={`${selectedCategory === value && "bg-[#f9be4f] text-white"} 
+                px-3 py-2 bg-slate-200 font-bold rounded-lg hover:bg-[#f9be4f] hover:text-white`}
                 key={key}>{value}</button>
             ))
           }
